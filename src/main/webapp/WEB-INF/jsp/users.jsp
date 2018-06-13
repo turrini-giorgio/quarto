@@ -20,6 +20,7 @@
 			<th>Cognome</th>
 			<th>Email</th>
 			<th>Tipo</th>
+			<th>&nbsp;</th>
 		</tr>
 	    <c:forEach items="${utenti}" var="utente">
 		<tr>
@@ -27,6 +28,7 @@
 			<td>${utente.cognome}</td>
 			<td>${utente.email}</td>
 			<td>${utente.tipo}</td>
+			<td><a href="/user/${utente.id}">Edit</a></td>
 		</tr>    	
 	    </c:forEach> 
 		</table>

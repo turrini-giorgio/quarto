@@ -3,10 +3,12 @@ package it.giorgio.quarto.controller;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import it.giorgio.quarto.entity.Utente;
@@ -33,6 +35,13 @@ public class HomeController {
 		List<Utente> utenti = this.utenteRepository.findAll();
 		model.put("utenti", utenti);
 		return "users";
+	}
+
+	@RequestMapping("/user/{id}")
+	public String user(Map<String, Object> model, @PathVariable int id) {
+		Optional<Utente> utente = this.utenteRepository.findById(id);
+		model.put("utente", utente.orElse(null));
+		return "user";
 	}
 
 }
